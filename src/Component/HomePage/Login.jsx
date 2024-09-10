@@ -33,7 +33,7 @@ function Login() {
 
   return (
     <div className='bg-gradient-to-r from-blue-200 via-purple-100 to-pink-200 min-h-screen flex items-center justify-center'>
-     <form onSubmit={handleSubmit} className='bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-xl rounded-lg w-full max-w-md'>
+     <form onSubmit={handleSubmit} className='bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-xl rounded-lg w-full max-w-md md:m-0 m-4'>
         <h1 className='text-2xl font-bold mb-6'>Login</h1>
  
         <div className='mb-4'>
