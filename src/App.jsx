@@ -26,11 +26,7 @@ function App() {
       <Footer />
   
 
-      {/* <UserNav />
-      <Dashbord />
-      <UserMeetingPage /> */}
-      {/* <UserProfile /> */}
-      {/* <UserMeeting /> */}
+
     </>
   )
 }
