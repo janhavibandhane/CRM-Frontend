@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -72,6 +73,12 @@ function Login() {
             required
           />
         </div>
+
+        <Link to={"/ChangePassword"}>
+        <div className=' flex justify-center items-center'>
+           <button className='block text-red-900 font-bold mb-2 text-center'>Change Passsword</button>
+        </div>
+        </Link>
 
         <button
           type='submit'

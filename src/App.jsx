@@ -12,6 +12,7 @@ import Dashbord from './Component/User/Dashbord'
 import UserProfile from './Component/User/UserProfile'
 import UserMeeting from './Component/User/UserMeeting'
 import SignIn from './Component/HomePage/SignIn'
+import ChangePassword from './Component/HomePage/ChangePassword'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,7 +24,7 @@ function App() {
       <Middle2 />
       <Header />
       <Footer />
-     
+  
 
       {/* <UserNav />
       <Dashbord />

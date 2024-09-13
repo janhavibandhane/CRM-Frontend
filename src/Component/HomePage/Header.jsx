@@ -1,4 +1,5 @@
 import imh from "/Images/HomeImg/giif.gif";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -12,7 +13,8 @@ function Header() {
               <p className="py-6">
                 We Are Here Only For You So Get Demo And Learn How To Use It.
               </p>
-              <button className="hover:text-blue-800 hover:bg-blue-200 btn btn-ghost bg-blue-400 text-white text-xl mr-2">Get Demo</button>
+             <button className="hover:text-blue-800 hover:bg-blue-200 btn btn-ghost bg-blue-400 text-white text-xl mr-2"> <Link to={"/user"}>Get Demo </Link></button>
+             
             </div>
           </div>
         </div>

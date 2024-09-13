@@ -8,6 +8,7 @@ import UserMeeting from './Component/User/UserMeeting.jsx';
 import UserProfile from './Component/User/UserProfile.jsx';
 import SignIn from './Component/HomePage/SignIn.jsx';
 import Login from './Component/HomePage/Login.jsx';
+import ChangePassword from './Component/HomePage/ChangePassword.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
              <Route path='/signin' element={<SignIn/>}/>
              <Route path='/Profile' element={<UserProfile />}></Route>
              <Route path='/login' element={<Login />} />
+             <Route path='/ChangePassword' element={<ChangePassword />} />
              
           </Routes> 
     </Router>   
