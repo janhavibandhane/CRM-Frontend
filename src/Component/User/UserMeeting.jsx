@@ -41,7 +41,7 @@ function UserMeeting() {
           <div className='p-6 rounded w-full'>
         
 
-                <button className="btn btn-primary text-center" onClick={createMeeting} >
+                <button className="btn bg-[#1d3d6d] text-white hover:text-[#002147] text-center m-2" onClick={createMeeting} >
                     Create Meeting
                 </button>
             

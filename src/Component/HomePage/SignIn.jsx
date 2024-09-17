@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import HomeLoginSigninReuseCompo from '../HomeReuseableComponents/HomeLoginSigninReuseCompo';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -32,10 +33,11 @@ function SignIn() {
   };
 
   return (
-    <div className='bg-gradient-to-r from-blue-200 via-purple-100 to-pink-200 min-h-screen flex items-center justify-center'>
-     <form onSubmit={handleSubmit} className='bg-gradient-to-br from-white via-blue-50 to-blue-100 p-8 shadow-xl rounded-lg w-full max-w-md md:m-0 m-4'>
-        <h1 className='text-2xl font-bold mb-6'>Sign In</h1>
-        <div className='mb-4'>
+    <>
+    <HomeLoginSigninReuseCompo
+    item1={<>Sign In</>}
+    item2={<>
+       <div className='mb-4'>
           <label htmlFor='fullName' className='block text-gray-700 font-bold mb-2'>Full Name</label>
           <input
             type='text'
@@ -93,14 +95,11 @@ function SignIn() {
             className='file-input file-input-bordered w-full max-w-xs'
           />
         </div>
-        <button
-          type='submit'
-          className='bg-blue-400 text-white p-2 rounded w-full font-bold'
-        >
-          Submit
-        </button>
-      </form>
-    </div>
+    </>}
+    item3={handleSubmit}
+    item4={<>Submit</>}
+    ></HomeLoginSigninReuseCompo>
+    </>
   );
 }
 

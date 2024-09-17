@@ -28,7 +28,7 @@ function Dashbord() {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
          <li><a>Home</a></li>
          <li><Link to={"meeting"}>Meeting</Link></li>
-         <li><a>Leades</a></li>
+         <li><Link to={"UserAddSingleLead"}>Leads</Link></li>
       </ul>
     </div>
    
@@ -39,9 +39,9 @@ function Dashbord() {
     <ul className="lg:menu lg:flex lg:flex-row lg:ml-[-17rem] lg:space-x-20 lg:text-lg hidden">
       <li><a>Home</a></li>
       <li><Link to={"meeting"}>Meeting</Link></li>
-      <li><a>Leades</a></li>
-      <li><a>Leades</a></li>
-      <li><a>Leades</a></li>
+      <li><Link to={"UserLeads"}>Leades</Link></li>
+      <li><a>Leads</a></li>
+      <li><a>Leads</a></li>
     </ul>
   </div>
 

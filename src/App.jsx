@@ -13,6 +13,8 @@ import UserProfile from './Component/User/UserProfile'
 import UserMeeting from './Component/User/UserMeeting'
 import SignIn from './Component/HomePage/SignIn'
 import ChangePassword from './Component/HomePage/ChangePassword'
+import UserLeads from './Component/User/UserLeads'
+import UserAddSingleLead from './Component/User/UserAddSingleLead'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +26,7 @@ function App() {
       <Middle2 />
       <Header />
       <Footer />
+      <UserLeads />
   
 
 

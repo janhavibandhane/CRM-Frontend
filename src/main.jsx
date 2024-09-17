@@ -9,6 +9,8 @@ import UserProfile from './Component/User/UserProfile.jsx';
 import SignIn from './Component/HomePage/SignIn.jsx';
 import Login from './Component/HomePage/Login.jsx';
 import ChangePassword from './Component/HomePage/ChangePassword.jsx';
+import UserAddSingleLead from './Component/User/UserAddSingleLead.jsx';
+import UserLeads from './Component/User/UserLeads.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,9 +20,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
              <Route path='' element={<App />}></Route>
              <Route path='/user' element={<Layout />} >
                  <Route path='meeting' element={<UserMeeting />}></Route>
+                 <Route path='profile' element={<UserProfile />}></Route>
+                 <Route path='UserLeads' element={<UserLeads />} />
              </Route>
              <Route path='/signin' element={<SignIn/>}/>
-             <Route path='/Profile' element={<UserProfile />}></Route>
              <Route path='/login' element={<Login />} />
              <Route path='/ChangePassword' element={<ChangePassword />} />
              
