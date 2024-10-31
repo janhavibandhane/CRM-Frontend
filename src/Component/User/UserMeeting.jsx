@@ -1,16 +1,15 @@
 import { useState } from "react";
 
 function UserMeeting() {
-
   const [savedMeetings, setSavedMeetings] = useState([]);
-  const [showForm, setShowForm] = useState(false); // State to control form visibility
+  const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     meetingText: "",
     meetingDate: "",
     meetingTime: "",
-    meetingPeriod: "AM"
+    meetingPeriod: "AM",
   });
- 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -25,96 +24,92 @@ function UserMeeting() {
       meetingText: "",
       meetingDate: "",
       meetingTime: "",
-      meetingPeriod: "AM"
+      meetingPeriod: "AM",
     });
-    setShowForm(false); // Hide the form after adding a meeting
+    setShowForm(false);
   };
 
-  function createMeeting(){
+  function createMeeting() {
     setShowForm(true);
   }
 
   return (
     <>
-      <div className='flex w-full justify-center items-center mt-20'>
-        <div className='min-h-screen flex mt-10'>
-          <div className='p-6 rounded w-full'>
+      <div className="flex flex-col items-center mt-16 p-4">
+        <h1 className="text-2xl font-bold text-gray-800 mb-8">Meeting Scheduler</h1>
         
+        <button
+          className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg mb-4"
+          onClick={createMeeting}
+        >
+          Create Meeting
+        </button>
 
-                <button className="btn bg-[#1d3d6d] text-white hover:text-[#002147] text-center m-2" onClick={createMeeting} >
-                    Create Meeting
-                </button>
-            
-            {showForm && (
-              <div className='mb-4'>
-                <input
-                  type='text'
-                  name='meetingText'
-                  placeholder='Enter meeting details'
-                  value={formData.meetingText}
-                  onChange={handleChange}
-                  className='w-full p-2 border border-gray-300 rounded mb-2'
-                />
-                <input
-                  type='date'
-                  name='meetingDate'
-                  value={formData.meetingDate}
-                  onChange={handleChange}
-                  className='w-full p-2 border border-gray-300 rounded mb-2'
-                />
-                <div className='flex space-x-2 mb-4'>
-                  <input
-                    type='time'
-                    name='meetingTime'
-                    value={formData.meetingTime}
-                    onChange={handleChange}
-                    className='w-full p-2 border border-gray-300 rounded'
-                  />
-                  <select
-                    name='meetingPeriod'
-                    value={formData.meetingPeriod}
-                    onChange={handleChange}
-                    className='p-2 border border-gray-300 rounded'
-                  >
-                    <option value='AM'>AM</option>
-                    <option value='PM'>PM</option>
-                  </select>
-                </div>
-                <button
-                  onClick={addMeet}
-                  className='bg-[#1d3d6d] text-white p-2 rounded w-full'
-                >
-                  Add Meeting
-                </button>
-              </div>
-            )}
-
-            <div className='mt-4'>
-
-              {savedMeetings.map((meeting, index) => (
-                <>
-               
-                <div key={index} className='bg-gray-200 p-2 rounded mt-2 flex justify-between items-center'>
-                  <div className='md:w-[40rem] w-[15rem] flex justify-between'>
-                    <div>
-                      <div className='font-semibold'>{meeting.meetingText}</div>
-                      <div className='text-sm text-gray-600'>
-                        {meeting.meetingDate} at {meeting.meetingTime} {meeting.meetingPeriod}
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setSavedMeetings(savedMeetings.filter((_, i) => i !== index))}
-                      className='bg-red-500 text-white p-1 rounded'
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-                </>
-              ))}
-
+        {showForm && (
+          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6">
+            <h2 className="text-lg font-semibold text-gray-700 mb-4">New Meeting Details</h2>
+            <input
+              type="text"
+              name="meetingText"
+              placeholder="Enter meeting details"
+              value={formData.meetingText}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:ring focus:ring-blue-200"
+            />
+            <input
+              type="date"
+              name="meetingDate"
+              value={formData.meetingDate}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:ring focus:ring-blue-200"
+            />
+            <div className="flex space-x-4 mb-4">
+              <input
+                type="time"
+                name="meetingTime"
+                value={formData.meetingTime}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+              />
+              <select
+                name="meetingPeriod"
+                value={formData.meetingPeriod}
+                onChange={handleChange}
+                className="p-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+              >
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
             </div>
+            <button
+              onClick={addMeet}
+              className="bg-blue-600 text-white py-2 px-4 rounded-lg w-full hover:bg-blue-700 transition duration-300 ease-in-out shadow-md"
+            >
+              Add Meeting
+            </button>
           </div>
+        )}
+
+        <div className="w-full max-w-lg space-y-4">
+          {savedMeetings.map((meeting, index) => (
+            <div
+              key={index}
+              className="flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow-md"
+            >
+              <div>
+                <div className="text-lg font-medium text-gray-800">{meeting.meetingText}</div>
+                <div className="text-sm text-gray-600">
+                  {meeting.meetingDate} at {meeting.meetingTime} {meeting.meetingPeriod}
+                </div>
+              </div>
+              <button
+                onClick={() => setSavedMeetings(savedMeetings.filter((_, i) => i !== index))}
+                className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition duration-300 ease-in-out shadow-md"
+              >
+                Delete
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </>

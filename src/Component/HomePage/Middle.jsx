@@ -1,31 +1,44 @@
 import imh from "/Images/HomeImg/image.png";
+
 function Middle() {
   return (
     <>
-      <div className="hero w-full  bg-blue-50">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero w-full bg-blue-50 py-16 flex justify-center">
+        <div className="hero-content flex-col lg:flex-row-reverse items-center lg:space-x-8 px-6 lg:px-0">
+
+          {/* img */}
           <img
             src={imh}
-            className="md:max-w-2xl max-w rounded-lg "
+            alt="Customer Support"
+            className="md:max-w-xl max-w  rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
           />
-          <div>
-            <h1 className="md:text-5xl text-3xl  font-semibold text-blue-950 text-center md:text-start">Give Your Coustmers The <span className=" text-blue-400">Support</span> They Deserve</h1>
-            <p className="py-6 text-blue-950 text-lg text-center md:text-start">
-              Make coustmer happy and scale coustmer service without increasing units cost. 
+          {/* Content */}
+          <div className="text-center lg:text-left lg:max-w-md">
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-950">
+              Give Your Customers The <span className="text-blue-500">Support</span> They Deserve
+            </h1>
+            <p className="py-6 text-blue-900 text-lg">
+              Make customers happy and scale customer service without increasing unit costs.
             </p>
-            <div className=" ml-0 lg:ml-[-9.3rem]  mt-4 justify-center flex">
-               <div className="radial-progress text-blue-500 " style={{ "--value": 70 }} role="progressbar">
-                 70%
+            <div className="flex items-center justify-center lg:justify-start mt-6 space-x-4">
+              <div
+                className="radial-progress text-blue-500 bg-blue-100 rounded-full p-2 shadow-lg"
+                style={{ "--value": 70, width: "6rem", height: "6rem" }}
+                role="progressbar"
+              >
+                <span className="text-2xl font-semibold text-blue-600">70%</span>
               </div>
-              <div className=" mt-5 ml-4 text-lg text-blue-500 ">
-                Reduse your team's<br /> work load by up to..
+              <div className="text-blue-600 text-lg">
+                Reduce your team's<br /> workload by up to..
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
-      
     </>
   );
 }
+
 export default Middle;

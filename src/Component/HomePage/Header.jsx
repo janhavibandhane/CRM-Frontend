@@ -4,22 +4,30 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <>
-      <div className="hero w-full  bg-blue-50 md:p-20 p-10">
-        <div className="hero  ">
-          <div className="hero-content flex-col lg:flex-row space-x-10">
-            <img src={imh} className="md:max-w-xl max-w rounded-lg " />
-            <div>
-              <h1 className="md:text-5xl text-3xl  font-semibold text-blue-950">Get <span className="text-blue-400">Free</span> Demo </h1>
-              <p className="py-6">
-                We Are Here Only For You So Get Demo And Learn How To Use It.
-              </p>
-             <button className="hover:text-blue-800 hover:bg-blue-200 btn btn-ghost bg-blue-400 text-white text-xl mr-2"> <Link to={"/user"}>Get Demo </Link></button>
-             
-            </div>
+      <div className="hero w-full bg-blue-50 md:px-20 px-6 py-12 flex justify-center items-center">
+        <div className="flex flex-col lg:flex-row items-center space-y-8 lg:space-y-0 lg:space-x-12">
+          <img
+            src={imh}
+            alt="Demo GIF"
+            className="md:max-w-xl max-w  rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
+          />
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-blue-950">
+              Get <span className="text-blue-500">Free</span> Demo
+            </h1>
+            <p className="mt-4 mb-6 text-lg text-gray-600">
+              We are here only for you! Get a demo and learn how to use it.
+            </p>
+            <Link to="/user">
+              <button className="btn px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-lg rounded-lg shadow-md hover:from-blue-600 hover:to-blue-700 hover:shadow-lg transition duration-300">
+                Get Demo
+              </button>
+            </Link>
           </div>
         </div>
       </div>
     </>
   );
 }
+
 export default Header;

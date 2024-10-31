@@ -3,7 +3,7 @@ function Middle2() {
   return (
     <>
       <div className="hero w-full  bg-blue-50 flex justify-center items-center flex-col pt-10 pb-20">
-      <h1 className="md:text-5xl text-3xl  font-semibold text-blue-950 text-center mb-2 ">Services We Are Provied To Our <span className=" text-blue-400">Coustmers</span></h1>
+      <h1 className="md:text-5xl text-3xl text-blue-950 text-center mb-2 font-bold">Services We Are Provied To Our <span className=" text-blue-400">Coustmers</span></h1>
         <div className="carousel carousel-center rounded-box md:w-[60%] w-[70%] md:h-full h-[20rem]">
         <div className="carousel carousel-center rounded-box">
   <div className="carousel-item">
