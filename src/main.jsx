@@ -11,6 +11,7 @@ import Login from './Component/HomePage/Login.jsx';
 import ChangePassword from './Component/HomePage/ChangePassword.jsx';
 import UserAddSingleLead from './Component/User/UserAddSingleLead.jsx';
 import UserLeads from './Component/User/UserLeads.jsx';
+import Calendar from './Component/User/UserCalendar.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                  <Route path='meeting' element={<UserMeeting />}></Route>
                  <Route path='profile' element={<UserProfile />}></Route>
                  <Route path='UserLeads' element={<UserLeads />} />
+                 <Route path='Calender' element={<Calendar />} />
              </Route>
              <Route path='/signin' element={<SignIn/>}/>
              <Route path='/login' element={<Login />} />
