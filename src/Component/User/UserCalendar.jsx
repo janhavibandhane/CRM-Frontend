@@ -1,111 +1,91 @@
 import React, { useState, useEffect } from "react";
-import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameDay } from "date-fns";
+import { format, startOfWeek, addDays, isSameDay } from "date-fns";
 
-const UserCalendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const App = () => {
+  const [currentWeekStart, setCurrentWeekStart] = useState(startOfWeek(new Date(), { weekStartsOn: 0 }));
   const [notes, setNotes] = useState({});
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Load notes from local storage on initial render
+  // Load notes from localStorage on initial render
   useEffect(() => {
-    const savedNotes = localStorage.getItem("calendarNotes");
+    const savedNotes = localStorage.getItem("dailyNotes");
     if (savedNotes) {
       setNotes(JSON.parse(savedNotes));
     }
   }, []);
 
-  // Save notes to local storage whenever notes are updated
+  // Save notes to localStorage whenever notes change
   useEffect(() => {
-    localStorage.setItem("calendarNotes", JSON.stringify(notes));
+    localStorage.setItem("dailyNotes", JSON.stringify(notes));
   }, [notes]);
 
-  const monthStart = startOfMonth(currentDate);
-  const monthEnd = endOfMonth(monthStart);
-  const startDate = startOfWeek(monthStart);
-  const endDate = endOfWeek(monthEnd);
-
+  // Handle note updates for selected day
   const handleNoteChange = (e) => {
-    const newNotes = { ...notes, [selectedDate.toDateString()]: e.target.value };
-    setNotes(newNotes);
+    setNotes({ ...notes, [selectedDate.toDateString()]: e.target.value });
   };
 
-  const renderCells = () => {
-    const rows = [];
-    let days = [];
-    let day = startDate;
+  // Render days of the week
+  const renderDays = () => {
+    return Array.from({ length: 7 }, (_, index) => {
+      const day = addDays(currentWeekStart, index);
+      const isSelected = isSameDay(day, selectedDate);
 
-    while (day <= endDate) {
-      for (let i = 0; i < 7; i++) {
-        const formattedDate = format(day, "d");
-        const dayKey = day.toDateString();
-        days.push(
-          <div
-            key={day}
-            className={`border p-4 text-center cursor-pointer ${
-              isSameDay(day, selectedDate) ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => setSelectedDate(day)}
-          >
-            <div>{formattedDate}</div>
-            <div className="text-sm text-gray-500">
-              {notes[dayKey] && <span>📝</span>}
-            </div>
+      return (
+        <div
+          key={index}
+          className={`border p-4 rounded cursor-pointer transition duration-300 ${
+            isSelected ? "bg-blue-300 text-white" : "hover:bg-gray-100"
+          }`}
+          onClick={() => setSelectedDate(day)}
+        >
+          <div className="font-bold text-center">{format(day, "EEE, MMM d")}</div>
+          <div className="mt-2 text-sm text-gray-700">
+            {notes[day.toDateString()] ? notes[day.toDateString()] : "No notes"}
           </div>
-        );
-        day = addDays(day, 1);
-      }
-      rows.push(
-        <div key={day} className="grid grid-cols-7 gap-1">
-          {days}
         </div>
       );
-      days = [];
-    }
-    return rows;
+    });
   };
 
   return (
-    <div className="container mx-auto p-4 mt-20 shadow-lg transition duration-300 ease-in-out">
-      <div className="flex justify-between items-center mb-4">
+    <div className="container mx-auto mt-10 p-4">
+      {/* Header for Week Navigation */}
+      <div className="flex justify-between items-center mb-6">
         <button
-          className="bg-blue-200 p-2 rounded"
-          onClick={() => setCurrentDate(addDays(currentDate, -30))}
+          className="btn btn-sm btn-outline"
+          onClick={() => setCurrentWeekStart(addDays(currentWeekStart, -7))}
         >
-          Previous
+          Previous Week
         </button>
-        <h2 className="text-xl font-bold">{format(currentDate, "MMMM yyyy")}</h2>
+        <h2 className="text-xl font-bold">{format(currentWeekStart, "MMMM yyyy")}</h2>
         <button
-          className="bg-blue-200 p-2 rounded"
-          onClick={() => setCurrentDate(addDays(currentDate, 30))}
+          className="btn btn-sm btn-outline"
+          onClick={() => setCurrentWeekStart(addDays(currentWeekStart, 7))}
         >
-          Next
+          Next Week
         </button>
       </div>
 
-      {/* Weekday header, responsive for small screens */}
-      <div className="grid grid-cols-7 gap-1 text-center font-bold sm:grid-cols-7 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-          <div key={day} className="p-2 text-xs sm:text-base md:text-lg">
-            {day}
-          </div>
-        ))}
+      {/* Weekly View */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        {renderDays()}
       </div>
 
-      {/* Calendar grid cells */}
-      {renderCells()}
-
-      {/* Notes section */}
-      <div className="mt-4">
-        <h3 className="text-lg font-bold">Notes for {selectedDate.toDateString()}</h3>
+      {/* Notes Section */}
+      <div className="mt-6">
+        <h3 className="text-lg font-bold">
+          Notes for {selectedDate.toDateString()}
+        </h3>
         <textarea
-          className="w-full p-2 mt-2 transition duration-300 ease-in-out shadow-lg resize-none"
-          rows="3"
+          className="w-full p-3 border rounded mt-2"
+          rows="4"
           value={notes[selectedDate.toDateString()] || ""}
           onChange={handleNoteChange}
-        />
+          placeholder="Write your notes here..."
+        ></textarea>
       </div>
     </div>
   );
 };
 
-export default UserCalendar;
+export default App;
