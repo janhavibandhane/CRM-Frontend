@@ -27,7 +27,7 @@ function App() {
       <Middle2 />
       <Header />
       <Footer />
-      <UserLeads />
+      
       
   
 

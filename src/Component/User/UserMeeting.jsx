@@ -46,7 +46,7 @@ function UserMeeting() {
         </button>
 
         {showForm && (
-          <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mb-6">
             <h2 className="text-lg font-semibold text-gray-700 mb-4">New Meeting Details</h2>
             <input
               type="text"

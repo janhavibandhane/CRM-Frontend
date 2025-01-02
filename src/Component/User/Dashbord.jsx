@@ -42,7 +42,6 @@ function Dashbord() {
       <li><Link to={"meeting"}>Meeting</Link></li>
       <li><Link to={"UserLeads"}>Leades</Link></li>
       <li><Link to={"Calender"}>Calender</Link></li>
-      <li><a>Leads</a></li>
     </ul>
   </div>
 

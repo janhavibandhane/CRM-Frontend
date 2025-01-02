@@ -8,13 +8,13 @@ function UserLeads() {
   const [newLead, setNewLead] = useState({});
 
   // Add new column
-  const addColumn = () => {
-    const columnName = prompt("Enter new column name:");
-    if (columnName) {
-      setColumns([...columns, columnName]);
+  const addColumn =()=>{
+    const columnName=prompt("Enter Column Name");
+    if(!columnName){
+      setColumns([...columns,columnName]);
       setRows(rows.map((row) => ({ ...row, [columnName]: "" })));
     }
-  };
+  }
 
   // Add new row
   const addRow = () => {
@@ -80,12 +80,12 @@ function UserLeads() {
         <button className="btn btn-accent" onClick={addRow}>
           Add Row
         </button>
-        <button className="btn btn-success" onClick={exportToExcel}>
+        <button className="btn  bg-green-300" onClick={exportToExcel}>
           Export to Excel
         </button>
 
         {/* Import Excel Button */}
-        <label className="btn btn-warning cursor-pointer">
+        <label className="btn btn-success cursor-pointer">
           Import Excel
           <input
             type="file"
@@ -98,7 +98,7 @@ function UserLeads() {
 
       {/* Add Single Lead Form */}
       {isClick && (
-        <div className="border p-4 mb-4 rounded-lg">
+        <div className="border p-4 mb-4 rounded-lg shadow-lg">
           <h3 className="font-bold mb-2">Add New Lead</h3>
           {columns.map((col, index) => (
             <div key={index} className="mb-2">
@@ -119,10 +119,10 @@ function UserLeads() {
       )}
 
       {/* Dynamic Table */}
-      <table className="table table-zebra">
+      <table className="table table-zebra shadow-lg">
         <thead>
           <tr>
-            <th>#</th>
+            <th>.</th>
             {columns.map((col, index) => (
               <th key={index}>{col}</th>
             ))}

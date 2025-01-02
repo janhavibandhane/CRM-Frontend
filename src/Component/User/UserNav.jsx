@@ -47,9 +47,7 @@ function UserNav() {
                   </a>
                   </Link>
                 </li>
-                <li>
-                  <a>Settings</a>
-                </li>
+                
                 <li>
                   <a>Logout</a>
                 </li>

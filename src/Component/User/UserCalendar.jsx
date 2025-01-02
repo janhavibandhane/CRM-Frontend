@@ -33,7 +33,7 @@ const App = () => {
       return (
         <div
           key={index}
-          className={`border p-4 rounded cursor-pointer transition duration-300 ${
+          className={`border p-4 rounded cursor-pointer transition duration-300 shadow-lg  ${
             isSelected ? "bg-blue-300 text-white" : "hover:bg-gray-100"
           }`}
           onClick={() => setSelectedDate(day)}
@@ -48,7 +48,7 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto mt-10 p-4">
+    <div className="container mx-auto mt-10 p-4 shadow-lg">
       {/* Header for Week Navigation */}
       <div className="flex justify-between items-center mb-6">
         <button
@@ -72,7 +72,7 @@ const App = () => {
       </div>
 
       {/* Notes Section */}
-      <div className="mt-6">
+      <div className="mt-6 shadow-lg">
         <h3 className="text-lg font-bold">
           Notes for {selectedDate.toDateString()}
         </h3>

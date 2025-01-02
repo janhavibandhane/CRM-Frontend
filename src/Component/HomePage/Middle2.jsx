@@ -1,17 +1,20 @@
-import carousel1 from "/Images/HomeImg/carousel1.png"
+import carousel1 from "/Images/HomeImg/demo.png"
+import carousel2 from "/Images/HomeImg/demo2.png"
+
+
 function Middle2() {
   return (
     <>
       <div className="hero w-full  bg-blue-50 flex justify-center items-center flex-col pt-10 pb-20">
       <h1 className="md:text-5xl text-3xl text-blue-950 text-center mb-2 font-bold">Services We Are Provied To Our <span className=" text-blue-400">Coustmers</span></h1>
-        <div className="carousel carousel-center rounded-box md:w-[60%] w-[70%] md:h-full h-[20rem]">
+        <div className="carousel carousel-center rounded-box md:w-[60%] w-[70%] md:h-full h-[20rem] shadow-lg  bg-gradient-to-r from-blue-200 via-blue-300 to-blue-500">
         <div className="carousel carousel-center rounded-box">
   <div className="carousel-item">
-    <img src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp" alt="Pizza" />
+    <img src={carousel1} alt="Pizza" className=" lg:w-[30rem] w-[23rem] m-1" />
   </div>
   <div className="carousel-item">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
+      src={carousel2} className=" lg:w-[34rem] w-[28rem] m-1"
       alt="Pizza" />
   </div>
   <div className="carousel-item">

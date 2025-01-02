@@ -1,118 +1,133 @@
-import React, { useState } from "react";
+// Install dependencies: react, vite, tailwindcss, daisyui
+// In your terminal, run the following commands to set up the project:
+// npm create vite@latest my-profile-page --template react
+// cd my-profile-page
+// npm install tailwindcss postcss autoprefixer daisyui
+// npx tailwindcss init
+// Add DaisyUI plugin to the tailwind.config.js file
 
-function ProfilePage({ user }) {
+// src/App.jsx
+import React, { useState } from 'react';
+
+const ProfilePage = () => {
+  const [user, setUser] = useState({
+    username: 'john_doe',
+    fullName: 'John Doe',
+    email: 'john.doe@example.com',
+    profilePhoto: 'https://via.placeholder.com/150',
+  });
+
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(user);
 
-  // Handle input changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Simulate saving data
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData({ ...formData, profilePhoto: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSave = () => {
+    setUser(formData);
     setIsEditing(false);
   };
 
   return (
-    <div className="bg-blue-500 text-white lg:h-auto h-auto m-10 p-8 rounded-lg ">
-      {/* User Info or Edit Form */}
-      <div className="lg:text-xl text-lg mt-8 lg:mt-0 lg:space-y-5 space-y-5 lg:ml-10">
-        {!isEditing ? (
-          <>
-            {/* Profile Image */}
-            <div className=" flex flex-col lg:flex-row lg:justify-evenly lg:items-center items-center justify-center ">
-              <div>
-                <div className="avatar">
-                  <div className="lg:w-52 w-40 rounded-full">
-                    <img
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                      alt="Profile"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className=" space-y-3">
-                <div>
-                  <span className="font-bold">Full Name: janhavi bandhane</span>
-                </div>
-                <div>
-                  <span className="font-bold">Username:janhavib</span>
-                </div>
-                <div>
-                  <span className="font-bold">Contact Number:9322560897</span>
-                </div>
-                <div>
-                  <span className="font-bold">Email:janhavibandhane@gmail.com</span>
-                </div>
-                <button
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 mt-4 rounded"
-                  onClick={() => setIsEditing(true)}
-                >
-                  Edit Profile
-                </button>
-              </div>
+    <div className="min-h-screen bg-sky-100 flex items-center justify-center">
+      <div className="card w-96 bg-white shadow-xl p-6 rounded-lg">
+        <div className="flex flex-col items-center">
+          <div className="avatar mb-4">
+            <div className="w-24 rounded-full ring ring-sky-500 ring-offset-base-100 ring-offset-2">
+              <img src={formData.profilePhoto} alt="Profile" />
             </div>
-          </>
-        ) : (
-          <div className="space-y-5">
-            <div>
-              <label className="font-bold">Full Name: </label>
+          </div>
+          {isEditing && (
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoUpload}
+              className="file-input file-input-bordered w-full mb-4"
+            />
+          )}
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">
+            {isEditing ? (
               <input
                 type="text"
                 name="fullName"
-                value=""
-                onChange={handleChange}
-                className="text-black rounded px-2 py-1"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                className="input input-bordered w-full"
               />
-            </div>
-            <div>
-              <label className="font-bold">Username: </label>
-              <input
-                type="text"
-                name="userName"
-                value=""
-                onChange={handleChange}
-                className="text-black rounded px-2 py-1"
-              />
-            </div>
-            <div>
-              <label className="font-bold">Contact Number: </label>
-              <input
-                type="text"
-                name="contactNumber"
-                value=""
-                onChange={handleChange}
-                className="text-black rounded px-2 py-1"
-              />
-            </div>
-            <div>
-              <label className="font-bold">Email: </label>
+            ) : (
+              user.fullName
+            )}
+          </h2>
+          <p className="text-gray-600 mb-2">
+            {isEditing ? (
               <input
                 type="email"
                 name="email"
-                value=""
-                onChange={handleChange}
-                className="text-black rounded px-2 py-1"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="input input-bordered w-full"
               />
-            </div>
-            <button
-              className="bg-blue-700 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-4 rounded"
-              onClick={handleSave}
-            >
-              Save Changes
-            </button>
-            <button
-              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 mt-4 rounded ml-2"
-              onClick={() => setIsEditing(false)}
-            >
-              Cancel
-            </button>
+            ) : (
+              user.email
+            )}
+          </p>
+          <p className="text-gray-500 mb-4">
+            {isEditing ? (
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                className="input input-bordered w-full"
+              />
+            ) : (
+              `@${user.username}`
+            )}
+          </p>
+          <div className="flex gap-2">
+            {isEditing ? (
+              <>
+                <button
+                  className="btn bg-blue-400 btn-sm"
+                  onClick={handleSave}
+                >
+                  Save
+                </button>
+                <button
+                  className="btn btn-secondary btn-sm"
+                  onClick={() => setIsEditing(false)}
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <button
+                className="btn bg-blue-400 btn-sm"
+                onClick={() => setIsEditing(true)}
+              >
+                Edit Profile
+              </button>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default ProfilePage;
+
+
