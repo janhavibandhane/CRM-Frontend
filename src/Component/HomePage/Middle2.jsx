@@ -1,5 +1,9 @@
 import carousel1 from "/Images/HomeImg/demo.png"
 import carousel2 from "/Images/HomeImg/demo2.png"
+import carousel3  from "/Images/HomeImg/carousel3.png"
+import carousel5  from "/Images/HomeImg/carousel5.png"
+import carousel4  from "/Images/HomeImg/carousel4.png"
+
 
 
 function Middle2() {
@@ -19,25 +23,25 @@ function Middle2() {
   </div>
   <div className="carousel-item">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
+      src={carousel3} className=" lg:w-[34rem] w-[28rem] m-1"
       alt="Pizza" />
   </div>
   <div className="carousel-item">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp"
+      src={carousel4} className="lg:w-[34rem] w-[28rem] m-1"
       alt="Pizza" />
   </div>
   <div className="carousel-item">
-    <img src="https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp" alt="Pizza" />
+    <img src={carousel5} className="lg:w-[34rem] w-[35rem] m-1" alt="Pizza" />
   </div>
-  <div className="carousel-item">
+  {/* <div className="carousel-item">
     <img src="https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp" alt="Pizza" />
   </div>
   <div className="carousel-item">
     <img
       src="https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp"
       alt="Pizza" />
-  </div>
+  </div> */}
 </div>
         </div>
       </div>

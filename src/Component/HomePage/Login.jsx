@@ -75,14 +75,10 @@ function Login() {
         />
       </div>
 
-      <Link to={"/ChangePassword"}>
-      <div className=' flex justify-center items-center'>
-         <button className='block text-red-900 font-bold mb-2 text-center'>Change Passsword</button>
-      </div>
-      </Link>
+      
       </>}
       item3={handleSubmit}
-      item4={<>Submit</>}
+      item4={<><Link to={"/user"}>Submit</Link></>}
       ></HomeLoginSigninReuseCompo>
         
    

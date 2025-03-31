@@ -15,8 +15,9 @@ function UserNav() {
           {/* other options */}
           {/* 1st */}
           <div className=" md:space-x-5 space-x-2 md:mr-5 mr-2">
-          <IoSettings  className=" md:text-3xl text-xl"/>
-          <MdLogout className=" md:text-3xl text-xl "/>
+          {/* <IoSettings  className=" md:text-3xl text-xl"/> */}
+           <Link to={"/"}><MdLogout className=" md:text-3xl text-xl "/>
+           </Link>
           </div>
           {/* Profile */}
           <div className="flex-none gap-2 text-black">
@@ -48,9 +49,11 @@ function UserNav() {
                   </Link>
                 </li>
                 
+                <Link to={"/"}>
                 <li>
                   <a>Logout</a>
                 </li>
+                </Link>
               </ul>
 
 

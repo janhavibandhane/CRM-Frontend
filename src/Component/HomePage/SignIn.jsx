@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import HomeLoginSigninReuseCompo from '../HomeReuseableComponents/HomeLoginSigninReuseCompo';
 
 function SignIn() {
@@ -97,7 +98,7 @@ function SignIn() {
         </div>
     </>}
     item3={handleSubmit}
-    item4={<>Submit</>}
+      item4={<><Link to={"/user"}>Submit</Link></>}
     ></HomeLoginSigninReuseCompo>
     </>
   );
