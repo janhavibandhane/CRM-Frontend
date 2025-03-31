@@ -6,7 +6,7 @@ function Nav() {
    
       <div className=" bg-gradient-to-r from-blue-100 via-blue-200 to-blue-300 navbar w-full ">
         <div className="flex-1">
-          <a className="text-xl">daisyUI</a>
+          <a className="text-xl font-bold text-blue-500">Sales Helper</a>
         </div>
 
         <div className=" text-blue-800 btn btn-ghost hover:bg-blue-400 hover:text-white text-xl mr-2">

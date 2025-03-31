@@ -9,7 +9,7 @@ function UserNav() {
 
             {/* logo */}
           <div className="flex-1">
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+            <a className="btn btn-ghost text-xl font-bold text-blue-100">Sales Helper</a>
           </div>
 
           {/* other options */}
